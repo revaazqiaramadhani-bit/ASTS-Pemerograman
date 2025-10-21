@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <title>Data Peserta Pencoblosan</title>
+</head>
+<body>
+<script>
+  let jumlahPeserta = parseInt(prompt("Masukkan jumlah peserta yang ingin didata:", "1"));
+  
+  let daftar = "<h2>Daftar Peserta Pencoblosan</h2>";
+  daftar += "<table border='1' cellpadding='5' cellspacing='0'>";
+  daftar += "<tr><th>No</th><th>Nama</th><th>Umur</th><th>Status</th><th>Kelayakan Memilih</th></tr>";
+
+  for (let i = 1; i <= jumlahPeserta; i++) {
+    let nama = prompt("Masukkan nama peserta ke-" + i + ":");
+    let umur = parseInt(prompt("Masukkan umur " + nama + ":", "0"));
+    let menikah = prompt("Apakah " + nama + " sudah menikah? (ya/tidak):").toLowerCase();
+
+    let status = "";
+    if (umur >= 17 || menikah === "ya") {
+      status = "Boleh memilih ✅";
+    } else {
+      status = "Belum boleh memilih ❌";
+    }
+
+    daftar += "<tr>";
+    daftar += "<td>" + i + "</td>";
+    daftar += "<td>" + nama + "</td>";
+    daftar += "<td>" + umur + " tahun</td>";
+    daftar += "<td>" + (menikah === "ya" ? "Sudah menikah" : "Belum menikah") + "</td>";
+    daftar += "<td>" + status + "</td>";
+    daftar += "</tr>";
+  }
+
+  daftar += "</table>";
+  daftar += "<p><strong>Terima kasih telah mengisi data peserta!</strong></p>";
+
+  document.write(daftar);
+</script>
+</body>
+</html>
